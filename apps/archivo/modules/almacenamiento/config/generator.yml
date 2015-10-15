@@ -1,0 +1,34 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_Almacenamiento
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_almacenamiento
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: innerList
+        title: Modo de Almacenamiento en el estante
+        display: [archivo_serie_documental, tramos]
+        fields:
+          archivo_serie_documental: { label: Serie Documental }
+          tramos: { label: Tramos o Gavetas }
+        actions:
+          regresar_modulo: { label: Regresar a los estantes, action: regresarEstante }
+          _new: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar modo de almacenamiento
+        display: [serie_documental_id, _tramos]
+      new:
+        title: Nuevo modo de almacenamiento
+        display: [serie_documental_id, _tramos]

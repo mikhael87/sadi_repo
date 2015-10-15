@@ -1,0 +1,31 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Operaciones_Liga
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          operaciones_liga_liga
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+          created_at: {label: F. Creacion}
+      list:
+        title: Ligas deportivas
+#        table_method: innerList
+        display: [mes, ano, descripcion, created_at]
+        actions:
+          _new: { label: Aperturar nueva liga }
+        object_actions: []
+        batch_actions: []
+      filter:
+          class: false
+      form:    ~
+      edit:    ~
+      new:
+        title: Nueva liga deportiva

@@ -1,0 +1,37 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_PrestamoArchivo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_prestamo_archivo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        f_expiracion: { label: Fecha de Expiración, help: Seleccione la fecha en la cual se expira el prestamo }
+      list:
+        table_method: innerList
+        title: Prestamos del expediente
+        display: [ _detalles, _solicitante, _documentos_list ]
+        fields:
+          documentos_list: {label: Documentos prestados }
+        actions:
+          regresar_modulo: { label: Regresar a los Expedientes, action: regresarExpediente }
+          _new: []
+        object_actions: 
+          deshabilitar: { label: Deshabilitar, action: deshabilitar, params: confirm='¿Estas seguro de deshabilitar el prestamo?' }
+          registrar_entrega_fisico: { label: Registrar entrega del fisico, action: registrar_entrega_fisico, params: confirm='¿Esta con usted el funcionario que va a relizar el retiro y posee el codigo de prestamo?' }
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:
+        title: Nuevo Prestamo
+        display: [_tipo_prestamo, _unidad, _documentos, f_expiracion]

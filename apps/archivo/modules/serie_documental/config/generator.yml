@@ -1,0 +1,48 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_SerieDocumental
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_serie_documental
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        padre_id: { label: Dependiente de }
+      list:
+        table_method: innerList
+        title: Series Documentales
+        display: [nombre, _clasificadores_list, _tipologias_documentales]
+        fields:
+          clasificadores_list: { label: Descriptores }
+        actions:
+          _new: []
+          series_inactivas: { label: Series Documentales Inactivas, action: seriesInactivas }
+        object_actions:
+          _edit: []
+          _delete: []
+          tipologia_documental: { label: Tipologia Documental, action: tipologiaDocumental }
+          transferir_serie: { label: Transferir Serie Documental, action: transferirSerie }
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar serie documental "%%nombre%%"
+        display:
+          Serie de: [_unidad_autoriza]
+          Serie Documental: [nombre, _clasificadores]
+      new:
+        title: Nueva serie documental
+        display:
+          Serie de: [_unidad_autoriza]
+          Serie Documental: [nombre, _clasificadores]
+        actions:
+          _list: []
+          _save: { label: Guargar y agregar tipología }
+          _save_and_add: []

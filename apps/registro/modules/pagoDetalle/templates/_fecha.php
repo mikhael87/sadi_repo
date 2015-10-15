@@ -1,0 +1,1 @@
+<?php echo date('d-m-Y h:i A', strtotime($operaciones_registro_pago->getCreatedAt())); ?>

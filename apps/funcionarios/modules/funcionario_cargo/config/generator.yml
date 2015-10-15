@@ -1,0 +1,52 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Funcionarios_FuncionarioCargo
+    theme:                 admin
+    css:                   default
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          funcionarios_funcionario_cargo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions:
+        _new: { credentials: [[Root, Administrador]], label: "Asignar cargo" }
+      fields:
+        cargo_id: {help: Seleccione el cargo que se le asignara al funcionario}
+        f_ingreso: {label: Fecha de Asignación, help: Fecha en la que comenzo las actividades en el cargo}
+        observaciones: {label: Coletilla de Firma, help: escriba de existir la coletilla de firma.}
+        funcionario_cargo_condicion_id: {label: Condición en el Cargo}
+        f_retiro: {label: Fecha de desincorporación}
+        motivo_retiro: {label: Motivo de desincorporación, help: escriba una breve observación de la desincorporación en el cargo}
+        status: {label: Estatus, help: estatus en el cargo}
+      list:
+        table_method: innerList
+        title: Cargos del Funcionario o Personal
+        max_per_page: 100
+        display: [unidad,ctnombre,funcionarios_funcionario_cargo_condicion,f_ingreso,_coletilla,f_retiro,motivo_retiro, _status]
+        fields:
+          funcionarios_funcionario_cargo_condicion: {label: Condicion en el Cargo}
+          ctnombre: {label: Cargo}
+          _coletilla: {label: Coletilla de Firma}
+          _status: {label: Estatus}
+        object_actions:
+          destituir: {label: Desincorporar, action: edit}
+          mover: {label: Mover de Unidad, action: mover}
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:
+        title: Desincorporación del Funcionario en el cargo
+        display: [_desincorporacion]
+        actions:
+          _list: []
+          _save: []
+      new:
+        title: Nuevo cargo para el Funcionario o Personal
+        display: 
+          Datos del nuevo cargo: [_form_unidad, _form_cargos_vacios,funcionario_cargo_condicion_id,f_ingreso]

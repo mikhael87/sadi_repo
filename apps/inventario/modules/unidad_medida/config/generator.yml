@@ -1,0 +1,28 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Inventario_UnidadMedida
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          inventario_unidad_medida
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Unidades de Medida
+        display: [ nombre ]
+        actions:
+          regresar_modulo: { label: Regresar al inventario, action: regresarInventario }
+          _new: []
+      filter:  ~
+      form:    ~
+      edit:    
+        title: Editar unidad de medida %%nombre%%
+      new:
+        title: Nueva unidad de medida

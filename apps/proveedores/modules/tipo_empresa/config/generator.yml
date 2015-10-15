@@ -1,0 +1,28 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Proveedores_TipoEmpresa
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          proveedores_tipo_empresa
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Tipos de empresa
+        display: [ nombre ]
+        actions:
+          regresar_modulo: { label: Regresar a los proveedores, action: regresarProveedores }
+          _new: []
+      filter:  ~
+      form:    ~
+      edit:    
+        title: Editar tipo empresa %%nombre%%
+      new:
+        title: Nuevo tipo de empresa

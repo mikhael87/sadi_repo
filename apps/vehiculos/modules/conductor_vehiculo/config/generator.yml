@@ -1,0 +1,33 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Vehiculos_ConductorVehiculo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vehiculos_conductor_vehiculo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: innerList
+        title:  Conductores
+        display: [nombre, condicion, _status, f_asignacion, f_desincorporado]
+        fields:
+          status: { label: 'Estatus' }
+          f_asignacion: { label: 'Fecha de asignación' }
+          f_desincorporado: { label: 'Fecha de desincorporación' }
+        actions:
+          regresar_modulo: { label: Volver a Vehículos, action: volver }
+        object_actions: []
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~

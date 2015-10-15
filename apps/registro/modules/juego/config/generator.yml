@@ -1,0 +1,65 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Operaciones_Juego
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          operaciones_juego
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+#    config:
+#      actions: ~
+#      fields:  ~
+#      list:    ~
+#      filter:  ~
+#      form:    ~
+#      edit:    ~
+#      new:     ~
+      
+    
+    config:
+      actions: ~
+      fields:
+          listDisciplina: {label: Disciplina}
+          listMatch: {label: Encuentro}
+      list:
+        title: Juegos registrados
+        max_per_page:   20
+        table_method: innerList
+        display: [_listDisciplina, _listMatch, _tipo, _grupo]
+        actions: ~
+        object_actions:
+          _edit: { label: Editar resultados }
+#          reporte: { label: Reporte, action: reporte }
+          anular: { label: Anular juego, action: anular, params: confirm=¿Esta seguro de anular este juego? }
+        batch_actions: []
+      filter:
+        display: [nombre, disciplinaVariante, tipoJuegoPuntaje, grupo_id, fecha]
+        fields:
+            disciplinaVariante: { label: Disciplina }
+            tipoJuegoPuntaje: { label: Tipo juego }
+            grupo_id: { label: Grupo }
+            nombre: { label: Empresa }
+      form:    ~
+      edit:
+        title: Editar juego
+        display: 
+          Disciplina: [ _disciplina, fecha ]
+          Juego: [ _tipo_juego ]
+        actions:
+          _list: { label: Volver }
+          _save: []
+          _save_and_add: []
+      new:
+        title: Nuevo juego
+        display: 
+          Disciplina: [ _disciplina, fecha ]
+          Juego: [ _tipo_juego ]
+        actions:
+          _list: { label: Volver }
+          _save: []
+          _save_and_add: []

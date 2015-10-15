@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Organigrama_UnidadTipo
+    theme:                 admin
+    css:                   default
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          organigrama_unidad_tipo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        descripcion: {help: Agregue una breve descripcion del tipo de unidad}
+      list:
+        title: Tipos de Unidades
+        display: [nombre,descripcion,principal]
+        actions:
+          regresar_modulo: { label: Regresar a las unidades, action: regresarUnidades }
+          _new: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar tipo de unidad %%nombre%%
+        display: [nombre,descripcion,principal]
+      new:
+        title: Nuevo tipo de unidad
+        display: [nombre,descripcion,principal]

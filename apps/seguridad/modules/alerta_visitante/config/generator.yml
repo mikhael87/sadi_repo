@@ -1,0 +1,36 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Seguridad_AlertaVisitante
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          seguridad_alerta_visitante
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        ci: { label: Cedula }
+        descripcion: { help: Describa el motivo porque se alertara sobre este visitante }
+        status: { label: Estatus }
+      list:
+        table_method: innerList
+        title: Visitantes en Alerta
+        display: [ci, descripcion, _status]
+        max_per_page:   200
+        actions:
+          _new: []
+          regresar_modulo: { label: Regresar, action: regresar }
+        object_actions: 
+          _edit: []
+          anular_alerta: { label: Anular alerta, action: anularAlerta }
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar visitante en alerta %%ci%%
+      new:
+        title: Nuevo visitante en alerta

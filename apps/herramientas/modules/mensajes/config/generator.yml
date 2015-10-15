@@ -1,0 +1,46 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Public_Mensajes
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          public_mensajes
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        created_at: {label: Fecha de envio}
+        status: {label: Estatus}
+      list:
+        table_method: innerList
+        title: Mensajes Internos
+        display: [_foto,  _contenido]
+        fields:
+          foto: {label: ' '}
+          contenido: {label: 'Conversaciones'}
+          status: {label: ' '}
+        object_actions: 
+          leido: { label: Marcar como leido, action: leido }
+        batch_actions: []
+        actions:
+          _new: []
+          grupo: { label: Grupos, action: grupos }
+          externo: { label: Mensajes Externos, action: externo}
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:
+        title: Nuevo mensaje rapido
+        display: 
+          Receptores: [_unidad, _funcionario_recibe, _grupos]
+#          Receptores: [_unidad, _funcionario_recibe, _condiciones, _oficina, _grupos]
+          Mensaje: [contenido, _opciones]
+        actions:
+          _list: []
+          _save: { label: Enviar }

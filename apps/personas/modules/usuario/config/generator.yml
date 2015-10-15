@@ -1,0 +1,52 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Personas_Persona
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          personas_persona
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        ci: {label: Cédula, help: Documento de identificación de la persona}
+        primer_nombre: {label: 1º Nombre}
+        segundo_nombre: {label: 2º Nombre, help: Si tiene mas de 2 nombres agregue los siguientes en este campo separados por espacio}
+        primer_apellido: {label: 1º Apellido}
+        segundo_apellido: {label: 2º Apellido, help: Si tiene mas de 2 apellidos agregue los siguientes en este campo separados por espacio}
+        f_nacimiento: {label: Fecha de Nacimiento}
+        datos: {label: Datos personales}
+        usuario: {label: Datos de usuario}
+      list:
+        title: Listado de Usuarios
+        max_per_page:   20
+        table_method: innerListUsuarios
+        display: [_foto,_datos,_usuario]
+        actions:
+          _new: { label: Nuevo Usuario }
+        object_actions:
+          _edit: []
+          passwd: {label: Reiniciar Contraseña, action: passwd, params: confirm='¿Estas seguro de reiniciar la contraseña?'}
+          anular: {label: Anular, action: anular}
+          reactivar: {label: Reactivar, action: reactivar}
+        batch_actions: []
+      filter:
+        display: [ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido]
+      form:    ~
+      edit:
+        title: Editar Usuario %%primer_nombre%%, %%primer_apellido%%
+        display: 
+          Datos Básicos: [_perfil,_ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,f_nacimiento,sexo,edo_civil,telf_movil,email_personal]
+      new:
+        title: Nuevo Usuario
+        display: 
+          Datos Básicos: [_perfil,_ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,f_nacimiento,sexo,edo_civil,telf_movil,email_personal]
+        actions:
+          _list: { label: Volver }
+          _save: []
+          _save_and_add: []

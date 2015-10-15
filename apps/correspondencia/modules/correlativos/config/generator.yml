@@ -1,0 +1,43 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Correspondencia_UnidadCorrelativo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          correspondencia_unidad_correlativo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        descripcion: { label: Descripción, help: Ingrese un nombre con el que pueda identificar este correlativo Ejm = Oficio; Memorandum; Generico }
+        letra: { label: Letra, help: Ingrese una letra con la que pueda relacionar el correlativo a su descripción Ejm = Oficio -> O; Memorandum -> M; Generico -> G. ó dejelo en blanco si no lo va a utilizar }
+        nomenclador: { help: Seleccione el nomenclador mas adecuado a lo que necesita }
+        secuencia: { label: Iniciar en, help: Indique el primer número con el que comenzara a enviar la correspondencia }
+        compartido: { help: Seleccione si desea compartir este correlativo con otras unidades a los que pertenezca como firmante }
+      list:
+        table_method: innerList
+        title: Correlativos de la Unidad
+        display: [descripcion]
+        fields:
+          secuencia: { label: Secuencia }
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:
+        title: Editar correlativo de la Unidad %%descripcion%%
+        display:
+          Grupo de: [_unidad_correlativo]
+          Identificación: [nomenclador, letra, secuencia, compartido]
+          Asociación: [_formatos]
+      new:
+        title: Nuevo correlativo de la Unidad
+        display:
+          Grupo de: [_unidad_correlativo]
+          Identificación: [nomenclador, letra, secuencia, compartido]
+          Asociación: [_formatos]

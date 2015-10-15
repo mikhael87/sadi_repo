@@ -1,0 +1,33 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Organigrama_CargoTipo
+    theme:                 admin
+    css:                   default
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          organigrama_cargo_tipo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        descripcion: {help: Agregue una breve descripcion del tipo de cargo}
+        organigrama_cargo_grado_list: { label: Grados, help: Seleccione todos los grados que comprende este tipo de cargo. }
+      list:
+        title: Tipos de Cargos
+        display: [organigrama_cargo_condicion, nombre, masculino, femenino, descripcion, _grados, principal]
+        fields:
+          organigrama_cargo_condicion: { label: Condición }
+          grados: { label: Grados asignados }
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar tipo de cargo %%nombre%%
+        display: [cargo_condicion_id, nombre, masculino, femenino, descripcion, organigrama_cargo_grado_list, principal]
+      new:
+        title: Nuevo tipo de cargo
+        display: [cargo_condicion_id, nombre, masculino, femenino, descripcion, organigrama_cargo_grado_list, principal]

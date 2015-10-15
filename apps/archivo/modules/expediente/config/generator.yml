@@ -1,0 +1,49 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_Expediente
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_expediente
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        correlativo: {label: Expediente Nº }
+      list:
+        table_method: innerListPropios
+        title: Expedientes Archivados
+        display: [_identificacion_list, _ubicacion, _documentos, _prestamos]
+        fields:
+          identificacion_list: { label: Identificación }
+          ubicacion: { label: Ubicación }
+          documentos: {label: Documentos archivados }
+        actions:
+          _new: []
+          excel: {label: Exportar, action: excel}
+        object_actions:
+          _edit: []
+          adjuntar_documento: { label: Agregar Documento, action: adjuntarDocumento }
+          prestar_documento: { label: Prestamos del Expediente, action: prestarDocumento }
+          anular: { label: Anular Expediente, action: anular }
+      filter:
+        display: [ correlativo, _identificacion_filter, contenido_documento ]
+      form:    ~
+      edit:
+        title: Editar Expediente %%correlativo%%
+        display: 
+          Identificacion: [_identificacion]
+          Lugar donde se archivara: [_archivar]
+      new:
+        title: Nuevo Expediente
+        display: 
+          Identificacion: [_identificacion]
+          Lugar donde se archivara: [_archivar]
+        actions:
+          _list: []
+          _save: { label: Guardar y agregar documentos }

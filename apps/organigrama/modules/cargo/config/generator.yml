@@ -1,0 +1,51 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Organigrama_Cargo
+    theme:                 admin
+    css:                   default
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          organigrama_cargo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        codigo_nomina: {help:ingrese el codigo de identificacion del cargo}
+        cargo_tipo_id: {label: Tipo, help: seleccione el tipo de cargo}
+        cargo_condicion_id: {label: Condición, help: seleccione la condición del cargo}
+        cargo_grado_id: {label: Grado, help: seleccione el grado o jerarquía del cargo}
+        descripcion: {help: ingrese una descripción breve de las actividades del cargo}
+        f_ingreso: {label: Fecha de apertura, help: seleccione la fecha en la que se inicio el cargo}
+      list:
+        table_method: innerList
+        title: Cargos de la Unidad
+        fields: 
+          acceso_perfil: { label: Perfil asignado }
+        display: [codigo_nomina,condicion,tipo,grado,f_ingreso, acceso_perfil, _funcionario_actual]
+        object_actions:
+          _edit: []
+          mover: {label: Mover de Unidad, action: mover}
+          anular: {label: Anular, action: anular}
+          reactivar: {label: Reactivar, action: reactivar}
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:
+        title: Editar Cargo %%codigo_nomina%%
+        display:
+          Identificación: [codigo_nomina,_condicionTipoGrado,f_ingreso]
+          Acceso: [perfil_id]
+        actions:
+          _list: []
+          _save: []
+      new:
+        title: Nuevo Cargo
+        display:
+          Identificación: [codigo_nomina,_condicionTipoGrado,f_ingreso]
+          Acceso: [perfil_id]

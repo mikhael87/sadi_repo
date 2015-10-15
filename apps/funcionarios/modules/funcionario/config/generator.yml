@@ -1,0 +1,59 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Funcionarios_Funcionario
+    theme:                 admin
+    css:                   default
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          funcionarios_funcionario
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+
+    config:
+      actions: ~
+      fields:
+        ci: {label: Cédula, help: Documento de identificación de la persona}
+        primer_nombre: {label: 1º Nombre}
+        segundo_nombre: {label: 2º Nombre, help: Si tiene mas de 2 nombres agregue los siguientes en este campo separados por espacio}
+        primer_apellido: {label: 1º Apellido}
+        segundo_apellido: {label: 2º Apellido, help: Si tiene mas de 2 apellidos agregue los siguientes en este campo separados por espacio}
+        f_nacimiento: {label: Fecha de Nacimiento}
+        estado_nacimiento_id: {help: Seleccione el estado donde nacion la persona}
+      list:
+        title: Listado de Funcionarios y Personal
+        table_method: innerList
+        display: [_foto, _cargo ,ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,sexo, _contacto, _usuario]
+        fields:
+          cargo: { label: ''}
+        object_actions:
+          _edit: []
+#          _delete: []
+          cargosf: {label: Cargo, action: cargosf}
+          passwd: {label: Reiniciar Contraseña, action: passwd, params: confirm='¿Estas seguro de reiniciar la contraseña?'}
+          digitalizar: {label: Firma digitalizada, action: digiFirma}
+          global_enable: {label: Activar acceso global, action: globalEnable, params: confirm='¿Estas seguro de activar el acceso global?'}
+          global_disable: {label: Desactivar acceso global, action: globalDisable, params: confirm='¿Estas seguro de desactivar el acceso global?'}
+          anular: {label: Anular, action: anular}
+          reactivar: {label: Reactivar, action: reactivar}
+        actions:
+          _new: { credentials: [[Root, Administrador]] }
+          formularioFirmas: {credentials: [[Root, Administrador]], label: Formulario de firmas , action: formularioFirmas}
+          migrar: {credentials: [[Root, Administrador]], label: Migrar Funcionarios, action: migrarFuncionarios}
+#          migrar_trabajadores: { label: Migrar Trabajadores, action: migrarTrabajadores }
+        batch_actions: []
+      filter:
+        display: [ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido]
+      form:    ~
+      edit:
+        title: Editar Funcionario o Personal %%primer_nombre%%, %%primer_apellido%%
+        display: 
+          Datos Básicos: [_ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,f_nacimiento,estado_nacimiento_id,sexo,edo_civil,telf_movil,email_institucional,email_personal, email_validado]
+      new:
+        title: Nuevo Funcionario o Personal
+        display: 
+          Datos Básicos: [_ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,f_nacimiento,estado_nacimiento_id,sexo,edo_civil,telf_movil,email_institucional,email_personal, email_validado]
+          Cargo: [_cargo_asignado]

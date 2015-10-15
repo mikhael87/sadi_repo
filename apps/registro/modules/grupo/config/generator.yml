@@ -1,0 +1,33 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Operaciones_Grupo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          operaciones_grupo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Grupos
+        table_method: innerList
+        display: [nombre]
+        actions:
+            _list: { label: Volver, action: volver }
+            _new: { label: Nuevo grupo }
+        object_actions:  ~
+#          _edit: { label: Editar resultados }
+#          reporte: { label: Reporte, action: reporte }
+#          anular: { label: Anular juego, action: anular, params: confirm=¿Esta seguro de anular este juego? }
+#        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:
+          title: Nuevo grupo

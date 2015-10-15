@@ -1,0 +1,37 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Operaciones_RegistroDisciplina
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          operaciones_registro_disciplina
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        dnombre: {label: Disciplina}
+        vnombre: {label: Categoría}
+        created_at: {label: Fecha de Inscripción}
+        director: {label: Director técnico}
+        recaudos: {label: Recaudos pendientes}
+      list:
+          title: Listado de Equipos para la empresa
+          max_per_page:   20
+          table_method: innerList
+          display: [dnombre, vnombre, _participantes, _recaudos, _director, _grupo, _puntaje]
+          actions:
+            _list: { label: Volver, action: volver }
+            _group: { label: Grupos, action: grupo }
+          object_actions:
+            nomina: {label: Gestionar Nómina, action: nomina}
+            director: {label: Gestionar Director, action: directores}
+          batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~

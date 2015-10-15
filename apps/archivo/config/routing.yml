@@ -1,0 +1,124 @@
+archivo_expediente_expedientes_compartidos:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_Expediente
+    module:               expedientes_compartidos
+    prefix_path:          /expedientes_compartidos
+    column:               id
+    with_wildcard_routes: true
+
+archivo_expediente_compartir:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_Expediente
+    module:               compartir
+    prefix_path:          /compartir
+    column:               id
+    with_wildcard_routes: true
+
+archivo_expediente_prestamos_solicitados:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_Expediente
+    module:               prestamos_solicitados
+    prefix_path:          /prestamos_solicitados
+    column:               id
+    with_wildcard_routes: true
+
+archivo_prestamo_archivo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_PrestamoArchivo
+    module:               prestamo
+    prefix_path:          /prestamo
+    column:               id
+    with_wildcard_routes: true
+
+archivo_funcionario_unidad:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_FuncionarioUnidad
+    module:               grupos
+    prefix_path:          /grupos
+    column:               id
+    with_wildcard_routes: true
+
+archivo_almacenamiento:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_Almacenamiento
+    module:               almacenamiento
+    prefix_path:          /almacenamiento
+    column:               id
+    with_wildcard_routes: true
+
+archivo_cuerpo_documental:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_CuerpoDocumental
+    module:               cuerpo_documental
+    prefix_path:          /cuerpo_documental
+    column:               id
+    with_wildcard_routes: true
+
+archivo_expediente:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_Expediente
+    module:               expediente
+    prefix_path:          /expediente
+    column:               id
+    with_wildcard_routes: true
+
+archivo_serie_documental:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_SerieDocumental
+    module:               serie_documental
+    prefix_path:          /serie_documental
+    column:               id
+    with_wildcard_routes: true
+
+archivo_documento:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_Documento
+    module:               documento
+    prefix_path:          /documento
+    column:               id
+    with_wildcard_routes: true
+
+archivo_tipologia_documental:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_TipologiaDocumental
+    module:               tipologia_documental
+    prefix_path:          /tipologia_documental
+    column:               id
+    with_wildcard_routes: true
+
+archivo_estante:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Archivo_Estante
+    module:               estante
+    prefix_path:          /estante
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

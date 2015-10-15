@@ -1,0 +1,37 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Inventario_ArticuloIngreso
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          inventario_articulo_ingreso
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        f_ingreso: { label: Fecha de ingreso }
+      list:
+        table_method: innerList
+        title: Compras realizadas
+        display: [ proveedores_proveedor, f_ingreso, _articulos_list ]
+#        sort: [f_ingreso, desc]
+        fields: 
+          proveedores_proveedor: { label: Proveedor }
+          articulos_list: { label: Articulos comprados }
+        actions: 
+          regresar_modulo: { label: Regresar al inventario, action: regresarInventario }
+          _new: { label: Nueva compra }
+      filter:
+        display: [ proveedor_id, f_ingreso ] 
+      form:    ~
+      edit:    ~
+      new:
+        title: Nueva compra
+        display: 
+          Origen: [ proveedor_id, f_ingreso ]
+          Articulos: [ _articulos_comprados ]

@@ -1,0 +1,45 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Seguridad_Ingreso
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          seguridad_ingreso
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        llave_ingreso_id: { label: N° de pase }
+      list:
+        table_method: innerList
+        title: Listado de Visitantes
+        max_per_page:   50
+        display: [_visitante, _destino, _estancia, _equipos]
+        fields: 
+          destino: { label: 'Destino y motivo' }
+        actions:
+          _new: []
+          preingreso_visitantes: { label: Preingreso de visitantes, action: preingreso }
+          alerta_visitante: { label: Visitantes en alerta, action: alertaVisitante}
+          pases_ingreso: { label: Pases de ingreso, action: pasesIngreso }
+        object_actions: 
+          salida: { label: Registrar Salida, action: registrarSalida }
+        batch_actions: []
+      filter:
+        display: [persona_id,unidad_id,funcionario_id,llave_ingreso_id,f_ingreso,f_egreso,motivo_id]
+      form:    ~
+      edit:    ~
+      new:
+        title: Nueva visita
+        display:
+          Visitante: [_visitante_form]
+          Destino y motivo: [_destino_form]
+          Estancia: [_estancia_form]
+          Equipos Personales: [_equipos_form]
+        actions:
+          _save: []

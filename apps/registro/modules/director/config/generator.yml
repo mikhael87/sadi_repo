@@ -1,0 +1,44 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Personas_Persona
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          personas_persona_director
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        ci: {label: Cédula, help: Documento de identificación de la persona}
+        primer_nombre: {label: Nombre}
+        primer_apellido: {label: Apellido}
+        f_nacimiento: {label: Fecha de Nacimiento}
+        created_at: {label: Fecha de Inscripción}
+      list:
+        title: Directores Técnicos
+        max_per_page:   20
+        table_method: innerListDirector
+        display: [primer_nombre, primer_apellido, ci, f_nacimiento, created_at]
+        actions:
+          _list: { label: Volver, action: volver }
+          _new: { label: Nuevo Director Técnico }
+        object_actions:
+          anular: {label: Anular, action: anular}
+        batch_actions: []
+      filter:
+        display: [ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido]
+      form:    ~
+      edit:    ~
+      new:
+        title: Nuevo Director Técnico
+        display: 
+          Datos Básicos: [_ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,f_nacimiento,sexo,edo_civil,telf_movil,email_personal]
+        actions:
+          _list: { label: Volver }
+          _save: []
+          _save_and_add: []

@@ -1,0 +1,82 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Correspondencia_Correspondencia
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          correspondencia_correspondencia_externa
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        email_externo: {label: Correo Electronico, help: correo electronico del emisor}
+        telf_local_externo: {label: Telf. Local, help: Telefono local o fijo del emisor}
+        telf_movil_externo: {label: Telf. Movil, help: Celular del emisor}
+        emisor_organismo_id: {label: Organismo, help: 'Escriba el Organismo que emite el documento, si aparece en el listado por seleccionelo'}
+        emisor_persona_id: {label: Nombre de la persona }
+        emisor_persona_cargo_id: {label: Cargo de la persona }
+        f_envio: { label: Fecha de Recepción }
+      list:
+        table_method: innerListExterna
+        title: Correspondencia y Solicitudes Externas
+        max_per_page:   10
+        display:  [_identificacion, _documento, _detalles, _acciones]
+        fields:
+          n_correspondencia_emisor_list: { label: Corretativos, help: Número de correlativo de entrada }
+          tadjuntos: { label: . }
+          tfisicos: { label: . }
+          ultima_vista: { label: ' ' }
+          user_update: { label: Recibido por }
+        object_actions: []
+        batch_actions: []
+        actions:
+          _new: []
+      filter:
+        display: [n_correspondencia_emisor, n_correspondencia_externa, f_envio, _separador_emisor_externo, emisor_organismo_id, emisor_persona_cedula, emisor_persona_id,emisor_persona_cargo_id, tipo_traslado_externo, empresa_traslado, n_guia_traslado,formatoPalabra]
+        fields:
+          n_correspondencia_emisor: { label: N° de Entrada, help: Número de correlativo de entrada }
+          n_correspondencia_externa: { label: Correlativo del Emisor, help: Número de correlativo del emisor }
+          emisor_persona_cedula: { label: Cedula de persona }
+          formato: { label: Tipo }
+          formatoPalabra: { label: Palabra o Frase }
+          adjunto: { label: Nombre }
+          fisico: { label: Tipo }
+          fisicoPalabra: { label: Caracteristicas }
+          statusRecepcion: { label: Estatus }
+      form:    ~
+      edit:
+        title: Editar correspondencia o solicitud externa "%%n_correspondencia_emisor%%"
+        display:
+          Identificación: [_n_correspondencia_emisor, n_correspondencia_externa, f_envio]
+          Dirigido a: [_receptor_unidad, _receptor_funcionario]
+          Emisor: [_organismo]
+          Contacto: [email_externo, telf_local_externo, telf_movil_externo]
+          Archivos adjuntos y contenido: [_anexo]
+          Registro de entregas fisicas: [_fisico]
+          Forma de Envio: [tipo_traslado_externo, empresa_traslado, n_guia_traslado]
+        fields:
+          n_correspondencia_emisor: { label: N° de Entrada, help: Número de correlativo de entrada }
+          n_correspondencia_externa: { label: Correlativo del Emisor, help: Número de correlativo del emisor }
+          Copia_Digital: { help: Por favor escanee el documento fisico que recibio y adjuntelo }
+      new:
+        title: Nueva correspondencia o solicitud externa
+        display:
+          Identificación: [_n_correspondencia_emisor, n_correspondencia_externa, f_envio]
+          Dirigido a: [_receptor_unidad, _receptor_funcionario]
+          Emisor: [_organismo]
+          Contacto: [email_externo, telf_local_externo, telf_movil_externo]
+          Archivos adjuntos y contenido: [_anexo]
+          Registro de entregas fisicas: [_fisico]
+          Forma de Envio: [tipo_traslado_externo, empresa_traslado, n_guia_traslado]
+        fields:
+          n_correspondencia_emisor: { label: N° de Entrada, help: Número de correlativo de entrada }
+          n_correspondencia_externa: { label: Correlativo del Emisor, help: Número de correlativo del emisor }
+          Copia_Digital: { help: Por favor escanee el documento fisico que recibio y adjuntelo }
+        actions:
+          _list: ~
+          _save: { label: Guardar y regresar }

@@ -1,0 +1,38 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Inventario_Articulo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          inventario_articulo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        stop: { label: Stop minimo }
+      list:
+        table_method: innerList
+        title: Inventario de artículos
+        display: [ codigo, nombre, unidad_medida, stop, cantidad_actual ]
+        fields:
+          unidad_medida: { label: Unidad de medida }
+        actions:
+          compras_realizadas: { label: Compras realizadas, action: comprasRealizadas }
+          _new: { label: Nuevo tipo de articulo }
+          unidad_medida: { label: Unidades de medida, action: unidadesMedida }
+          estadisticas: { label: Estadisticas, action: estadisticas }
+        object_actions:
+          entrega: { label: Detalles de entrega, action: entregasArticulo }
+        batch_actions: []
+      filter:
+        display: [ unidad_medida_id, codigo, nombre, stop ]
+      form:    ~
+      edit:
+        title: Editar artículo %%nombre%%
+      new:
+        title: Nuevo artículo

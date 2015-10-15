@@ -1,0 +1,33 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_Expediente
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_expediente_prestamos_solicitados
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Expedientes Solicitados
+        table_method: innerListSolicitados
+        display: [_identificacion_list, _ubicacion, _documentos, _detalles]
+        fields:
+          identificacion_list: { label: Identificación }
+          ubicacion: { label: Ubicación }
+          documentos: {label: Documentos archivados }
+        actions:
+          excel: {label: Exportar, action: excel}
+        object_actions: []
+        batch_actions: []
+      filter:
+        display: [ correlativo, _identificacion_filter, contenido_documento ]
+      form:    ~
+      edit:    ~
+      new:     ~

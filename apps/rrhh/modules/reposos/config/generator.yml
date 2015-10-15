@@ -1,0 +1,35 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Rrhh_Reposos
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          rrhh_reposos
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Reposos Registrados
+        table_method: innerListPersonal
+        display: [ _solicitud, tipo_reposo, _dias_reposo, _fechas_reposo, observaciones_descritas, _soportes ]
+        fields:
+          solicitud: { label: Nº Registro }
+          dias_reposo: { label: Dias registrados }
+          fechas_reposo: { label: Fechas del reposo }
+          observaciones_descritas: { label: Observaciones } 
+        actions: 
+          solicitar_reposo: { label: Registrar Reposo, action: solicitarReposo }
+#          reporte_global_reposos: { label: Reporte de la Unidad, action: reporteRepososUnidad }
+        object_actions: []
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~

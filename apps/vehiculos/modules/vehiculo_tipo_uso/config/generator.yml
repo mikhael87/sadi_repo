@@ -1,0 +1,43 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Vehiculos_TipoUso
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vehiculos_tipo_uso
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields: ~
+      list:
+        title: TIpos de uso
+        display: [nombre, descripcion, status, created_at]
+        fields:
+          status: { label: Estatus }
+          created_at: { label: Fecha de creación }
+        actions:
+          _new: { label: Nuevo }
+          regresar_modulo: { label: Volver a Vehículos, action: volver }
+        object_actions:
+          _edit: []
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editartipo de uso
+        display: [nombre, descripcion]
+        actions:
+          regresar_modulo: { label: Volver a Vehículos, action: volver }
+          _save: { label: Guardar }
+      new:
+        title: Nuevo tipo de uso
+        display: [nombre, descripcion]
+        actions:
+          regresar_modulo: { label: Volver a Vehículos, action: volver }
+          _save: { label: Guardar }
+          _save_and_add: { label: Guardar y agregar }

@@ -1,0 +1,133 @@
+operaciones_liga_liga:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Operaciones_Liga
+    module:               liga
+    prefix_path:          /liga
+    column:               id
+    with_wildcard_routes: true
+
+operaciones_grupo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Operaciones_Grupo
+    module:               grupo
+    prefix_path:          /grupo
+    column:               id
+    with_wildcard_routes: true
+
+operaciones_juego:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Operaciones_Juego
+    module:               juego
+    prefix_path:          /juego
+    column:               id
+    with_wildcard_routes: true
+
+operaciones_registro_pago:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Operaciones_RegistroPago
+    module:               pagoDetalle
+    prefix_path:          /pagoDetalle
+    column:               id
+    with_wildcard_routes: true
+
+empresas_empresa_pago:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Empresas_Empresa
+    module:               pago
+    prefix_path:          /pago
+    column:               id
+    with_wildcard_routes: true
+
+personas_persona_nomina:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Personas_Persona
+    module:               nomina
+    prefix_path:          /nomina
+    column:               id
+    with_wildcard_routes: true
+
+operaciones_registro_persona:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Operaciones_RegistroPersona
+    module:               nomina
+    prefix_path:          /nomina
+    column:               id
+    with_wildcard_routes: true
+
+personas_persona_director:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Personas_Persona
+    module:               director
+    prefix_path:          /director
+    column:               id
+    with_wildcard_routes: true
+
+operaciones_registro_disciplina:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Operaciones_RegistroDisciplina
+    module:               disciplina
+    prefix_path:          /disciplina
+    column:               id
+    with_wildcard_routes: true
+
+personas_persona_delegado:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Personas_Persona
+    module:               delegado
+    prefix_path:          /delegado
+    column:               id
+    with_wildcard_routes: true
+
+personas_persona:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Personas_Persona
+    module:               encargado
+    prefix_path:          /encargado
+    column:               id
+    with_wildcard_routes: true
+
+empresas_empresa_empresa:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Empresas_Empresa
+    module:               empresa
+    prefix_path:          /empresa
+    column:               id
+    with_wildcard_routes: true
+
+empresas_empresa:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Empresas_Empresa
+    module:               empresas_empresa
+    prefix_path:          /empresas_empresa
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

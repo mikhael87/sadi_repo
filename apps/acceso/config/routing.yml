@@ -1,0 +1,70 @@
+siglas_servicios_disponibles:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Siglas_ServiciosDisponibles
+    module:               io_disponible
+    prefix_path:          /io_disponible
+    column:               id
+    with_wildcard_routes: true
+
+siglas_servicios_publicados:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Siglas_ServiciosPublicados
+    module:               io_publicada
+    prefix_path:          /io_publicada
+    column:               id
+    with_wildcard_routes: true
+
+siglas_servidor_confianza:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Siglas_ServidorConfianza
+    module:               io
+    prefix_path:          /io
+    column:               id
+    with_wildcard_routes: true
+
+acceso_accion_delegada:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Acceso_AccionDelegada
+    module:               delegar
+    prefix_path:          /delegar
+    column:               id
+    with_wildcard_routes: true
+
+acceso_autorizacion_modulo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Acceso_AutorizacionModulo
+    module:               autorizacion
+    prefix_path:          /autorizacion
+    column:               id
+    with_wildcard_routes: true
+
+acceso_usuario:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Acceso_Usuario
+    module:               usuario
+    prefix_path:          /usuario
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

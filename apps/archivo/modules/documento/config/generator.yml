@@ -1,0 +1,47 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_Documento
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_documento
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        ruta: { label: Documento, help: Seleccione el archivo a adjuntar }
+      list:
+        table_method: innerList
+        title: Documentos adjuntos al expediente
+        fields:
+          nombre_original: { label: Archivo adjunto }
+          archivo_tipologia_documental: { label: Tipologia Documental }
+          valores_etiquetas: { label: Etiquetas }
+        display: [_archivo_adjunto, archivo_tipologia_documental, _valores_etiquetas]
+        actions:
+          regresar_modulo: { label: Regresar a los expedientes, action: regresarExpediente }
+          _new: []
+      filter:
+        fields:
+          contenido_automatico: { label: Texto en el adjunto }
+        display: [unidad_id,correlativo,nombre_original,contenido_automatico]
+      form:    ~
+      edit:
+        title: Editar documento (%%correlativo%%) del expediente
+        display: [ _identificacion, _adjuntar_archivo ]
+        actions:
+          regresar_modulo: { label: Regresar a los expedientes, action: regresarExpediente }
+          _save: []
+      new:
+        title: Nuevo documento del expediente
+        display: [ _identificacion, _adjuntar_archivo ]
+        actions:
+          regresar_modulo: { label: Regresar a los expedientes, action: regresarExpediente }
+          _save: []
+          _save_and_add: []
+

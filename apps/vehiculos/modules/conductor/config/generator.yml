@@ -1,0 +1,40 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Vehiculos_Conductor
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vehiculos_conductor
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: innerList
+        title: Conductores
+        display: [nombre_completo, cargo_nombre, _unidad]
+        fields:
+          unidad: { label: 'Unidad funcional' }
+          cargo_nombre: { label: 'Cargo' }
+          nombre_completo: { label: 'Nombre' }
+        actions:
+          _new: { label: Agregar conductores }
+        object_actions:
+          _delete: { label: Inactivar }
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:
+        title: Nuevos conductores
+        display:
+          Selección de Funcionarios: [_funcionario]
+        actions:
+          regresar_modulo: { label: Volver a Conductores, action: volverConductores }
+          _save: { label: Guardar }
+          _save_and_add: { label: Guardar y agregar }

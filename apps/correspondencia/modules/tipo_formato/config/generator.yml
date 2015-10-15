@@ -1,0 +1,39 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Correspondencia_TipoFormato
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          correspondencia_tipo_formato
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: innerList
+        title: Tipos de Formato
+        display: [id, nombre, classe, privado, principal, tipo, status, _parametros_list, user_update, updated_at]
+        fields:
+          parametros_list: { label: Parametros }
+          user_update: { label: Modificado por }
+          updated_at: { label: Ultima modificacion }
+        object_actions:
+          edit: { label: Editar, action: edit, params: confirm='¿Estas seguro de editar este tipo de formato? esto podria hacer que la aplicacion de correspondencia deje de funcionar' }
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar tipo de formato %%nombre%%
+        display: 
+          identificacion: [nombre, classe, descripcion, privado, principal, tipo]
+          Parametros de emisores: [_parametros_contenido]
+      new:
+        title: Nuevo tipo de formato
+        display: 
+          identificacion: [nombre, classe, descripcion, privado, principal, tipo]
+          Parametros de emisores: [_parametros_contenido]

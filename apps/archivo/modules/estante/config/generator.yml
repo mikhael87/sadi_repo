@@ -1,0 +1,48 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_Estante
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_estante
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        unidad_fisica_id: { label: Ubicación, help: Seleccione la unidad donde se ubica el estante }
+        identificador: { label: Código del Mueble, help: "escriba uno o varios caracteres que identifiquen el estante. Ejem: 'A', '1A', '1º'" }
+        tramos: { label: tramos o gavetas, help: Seleccione la cantidad de tramos o gavetas del estante }
+        alto_tramos: { label: Alto, help: seleccione el tamaño en centimetros del alto de un tramo. }
+        ancho_tramos: { label: Ancho, help: seleccione el tamaño en centimetros del ancho de un tramo. }
+        largo_tramos: { label: Largo, help: seleccione el tamaño en centimetros del largo de un tramo. }
+        detalles_ubicacion_fisica: { label: Detalles de ubicación fisica, help: Escriba de ser necesario los detalles de la ubicación o dirección fisica donde se encuentra el estante. }
+      list:
+        table_method: innerList
+        title: Estantería
+        display: [archivo_estante_modelo, organigrama_unidad_fisica, detalles_ubicacion_fisica, identificador, tramos, alto_tramos, ancho_tramos, largo_tramos, porcentaje_ocupado]
+        fields:
+          archivo_estante_modelo: { label: Modelo }
+          organigrama_unidad_fisica: { label: Ubicación }
+        object_actions:
+          _edit: []
+          _delete: []
+          almacenamiento: { label: Modo de Almacenamiento, action: almacenamiento }
+      filter:
+        class: false
+      form:    ~
+      edit:
+        title: Editar estante "%%identificador%%"
+        display: 
+          Identificación: [_tipo_estante, unidad_fisica_id, detalles_ubicacion_fisica, identificador, tramos]
+          Detalles de los tramos o gavetas: [_detalles_tramos]
+      new:
+        title: Nuevo estante
+        display:
+          Estante de: [_unidad_autoriza]
+          Identificación: [_tipo_estante, unidad_fisica_id, detalles_ubicacion_fisica, identificador, tramos]
+          Detalles de los tramos o gavetas: [_detalles_tramos]

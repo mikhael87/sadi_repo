@@ -1,0 +1,45 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Correspondencia_FuncionarioUnidad
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          correspondencia_funcionario_unidad
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        recibir: {label: Recibir Externa, help: Solo seleccione esta opción si la unidad a la que pertenece funciona como archivo y correspondencia externa }
+      list:
+        title: Grupo autorizado de correspondencia para la unidad
+        max_per_page:   250
+        display:  [unombre, persona, ctnombre, redactar, leer, recibir, firmar, administrar, user_update]
+        fields:
+          unombre: { label: Unidad a la que pertenece }
+          persona: { label: Funcionario }
+          ctnombre: { label: Cargo }
+          user_update: { label: Hecho por }
+        actions:
+          _new: { label: Nuevo permiso }
+          pordefecto: { action: permisosPorDefecto, label: Asignación automática }
+        object_actions:
+          _delete:    ~
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:
+        title: Edición de permiso del funcionario %%funcionario_id%%
+        display:  
+          Permisos: [redactar, leer, recibir, firmar, administrar]
+      new:
+        title: Nuevo funcionario autorizado de correspondencia
+        display:  
+          Grupo de: [_unidad_autoriza]
+          Autorizado: [_dependencia_unidad, _funcionario_autorizado]
+          Permisos: [redactar, leer, recibir, firmar, administrar]

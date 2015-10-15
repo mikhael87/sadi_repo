@@ -1,0 +1,40 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Empresas_Empresa
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          empresas_empresa_empresa
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        rcreated: {label: F. inscripción}
+        recParticipante: {label: Rec. Participante}
+        recEmpresa: {label: Rec. Empresa}
+      list:
+        title: Listado de Empresas Inscritas
+        max_per_page:   20
+        table_method: innerList
+        display: [_datos,_recaudos,_resumen]
+        actions:
+          new: { label: Registrar nueva empresa, action: asistente }
+        object_actions:
+          _edit: []
+          encargado: { label: Registrar encargado, action: encargados }
+          delegado: { label: Registrar delegado, action: delegados }
+          disciplina: { label: Inscribir disciplinas, action: gestionarDisciplina }
+          planillaInscripcion: { label: Planilla de Inscripción , action: planillaInscripcion }
+        batch_actions: []
+      filter:
+          display: [rif,nombre,recParticipante,recEmpresa,pago]
+          fields:
+              rif: { label: RIF }
+      form:    ~
+      edit:    ~
+      new:     ~

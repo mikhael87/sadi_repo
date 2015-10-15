@@ -1,0 +1,34 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Public_MensajesGrupo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          public_mensajes_grupo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        nombre: {label: Nombre del grupo}
+      list:
+        table_method: innerList
+        title: Grupos para los mensajes
+        display: [nombre, _integrantes]
+        object_actions:
+          participante: {label: Nuevo Participante, action: participante}
+          _edit: []
+          _delete: []
+        actions:
+          _new: []
+          regresar_modulo: { label: Regresar a Mensajes, action: regresarMensajes }
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:
+        title: Nuevo Grupo
+        display: [nombre]

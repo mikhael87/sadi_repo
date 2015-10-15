@@ -1,0 +1,34 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Acceso_AutorizacionModulo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          acceso_autorizacion_modulo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Autorizaciones
+        table_method: innerList
+        display: [funcionario, _permiso_list, _user_update]
+        fields:
+          permiso_list: { label: Permiso }
+          user_update: { label: Hecho por }
+        actions:
+          _new: []
+          regresar_modulo: { label: Regresar, action: regresar }
+        object_actions:
+          _delete: []
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:
+        title: Nueva Autorización
+        display: [_unidad, _funcionario, _permiso]

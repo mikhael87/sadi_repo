@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_CuerpoDocumental
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_cuerpo_documental
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: innerList
+        title: Secciones de la Serie Documental
+        display: [padre_id, nombre]
+        actions:
+          regresar_modulo: { label: Regresar a las Tipologias, action: regresarTipologias }
+          _new: []
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar sección "%%nombre%%"
+        display: [padre_id, nombre]
+      new:
+        title: Nuevo sección
+        display: [padre_id, nombre]

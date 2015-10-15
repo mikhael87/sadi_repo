@@ -1,0 +1,1 @@
+<a href="/uploads/archivo/<?php echo $archivo_documento->getRuta(); ?>"><?php echo $archivo_documento->getCorrelativo(); ?></a>

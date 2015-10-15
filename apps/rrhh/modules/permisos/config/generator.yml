@@ -1,0 +1,35 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Rrhh_Permisos
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          rrhh_permisos
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Permisos Solicitados
+        table_method: innerListPersonal
+        display: [ _solicitud, _dias_permiso, _fechas_permiso, observaciones_descritas ]
+        fields:
+          solicitud: { label: Nº Solicitud }
+          dias_permiso: { label: Dias solicitados }
+          fechas_permiso: { label: Fechas del permiso }
+          observaciones_descritas: { label: Observaciones } 
+        actions: 
+          solicitar_permiso: { label: Solicitar Permiso, action: solicitarPermiso }
+#          reporte_global_permisos: { label: Reporte de la Unidad, action: reportePermisosUnidad }
+        object_actions: []
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~

@@ -1,0 +1,38 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Funcionarios_FuncionarioCargoCertificado
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          funcionarios_funcionario_cargo_certificado
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: innerList
+        title: Certificados Electronicos del funcionario en el cargo
+        display: [_certificado, _detalles_tecnicos, _configuraciones, _validez]
+        fields: 
+          configuraciones: { label: Configuraciones de acceso }
+        actions:
+          _new: []
+          regresar_modulo: { label: Regresar, action: regresar }
+        object_actions:
+          anular_certificado: {label: Anular certificado, action: anularCertificado}
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:
+        actions: []
+      new:
+        title: Nuevo certificado del funcionario en el cargo
+        display: [_new_certificado]
+        actions:
+          _save: []

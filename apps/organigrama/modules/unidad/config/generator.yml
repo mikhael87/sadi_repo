@@ -1,0 +1,64 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Organigrama_Unidad
+    theme:                 admin
+    css:                   default
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          organigrama_unidad
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+
+    config:
+      actions: ~
+      fields:
+        unidad_tipo_id: { label: Tipo de Unidad, help: seleccione la clasificación de la unidad }
+        padre_id: { label: Dependencia, help: seleccione la unidad administrativa de la cual depende jerárquicamente }
+        f_ingreso: { label: Fecha de Apertura, help: indique la fecha en la cual se dio apertura o comenzo a laborar }
+        siglas: { label: SIGLAS }
+        nombre: { help: Escriba el nombre con el que identificara la unidad }
+        nombre_reducido: { help: Escriba un nombre corto para esta unidad para efectos de diagramación o vizualizaciones varias }
+        telf_uno: { label: Telefono principal }
+        telf_dos: { label: Telefono secundario }
+        dir_av_calle_esq: { label: Av/Calle/Ezq }
+        dir_edf_torre_anexo:  { label: Edif/Torre/Anexo }
+        dir_piso:  { label: Piso }
+        dir_urbanizacion:  { label: Urbanización }
+        dir_ciudad:  { label: Ciudad }
+        dir_punto_referencia:  { label: Punto de Referencia }
+      list:
+        table_method: innerList
+        title: Estructura Organizativa
+        max_per_page:   1000
+        fields:
+          list_identificacion: { label: Identificación }
+          list_detalles: { label: Detalles }
+          list_direccion: { label: Dirección }
+        display: [codigo_unidad, _list_identificacion, _list_detalles, _list_direccion]
+        actions:
+          _new: []
+          tipo: {label: Tipos de Unidad, action: unidadTipo}
+        object_actions:
+          _edit: []
+          anular: {label: Anular, action: anular}
+          cargos: {label: Cargos, action: cargos}
+        batch_actions: []
+      filter:
+        display: [codigo_unidad, nombre, unidad_tipo_id, estado_id, municipio_id, parroquia_id, dir_ciudad]
+      form:    ~
+      edit:
+        title: Editar Unidad %%nombre%%
+        display:
+          Identificación: [codigo_unidad, nombre, nombre_reducido, siglas, adscripcion, unidad_tipo_id, padre_id, f_ingreso]
+          Dirección: [_form_direccion_padre, estado_id, municipio_id, parroquia_id, dir_av_calle_esq, dir_edf_torre_anexo, dir_piso, dir_urbanizacion, dir_ciudad, dir_punto_referencia]
+          Contacto: [telf_uno, telf_dos]
+      new:
+        title: Nueva Unidad
+        display:
+          Identificación: [codigo_unidad, nombre, nombre_reducido, siglas, adscripcion, unidad_tipo_id, padre_id, f_ingreso]
+          Dirección: [_form_direccion_padre, estado_id, municipio_id, parroquia_id, dir_av_calle_esq, dir_edf_torre_anexo, dir_piso, dir_urbanizacion, dir_ciudad, dir_punto_referencia]
+          Contacto: [telf_uno, telf_dos]

@@ -1,0 +1,35 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Rrhh_Vacaciones
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          rrhh_vacaciones
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Vacaciones Personales
+        table_method: innerListPersonal
+        display: [ _periodo, _dias_disfrute, _solicitudes, _detalles ]
+        fields: 
+          dias_disfrute: { label: Dias de disfrute asignados }
+        actions: 
+          solicitar_vacaciones: { label: Solicitar Vacaciones, action: solicitarVacaciones }
+          reporte_unidad_vacaciones: { label: Reporte de la Unidad, action: reporteVacacionesUnidad }
+          reporte_global_vacaciones: { label: Reporte de Global, action: reporteVacacionesGlobal }
+        object_actions: []
+#          pausar: { label: Pausar teporalmente, action: pausar }
+#          retormar: { label: Retomar vacaciones pausadas, action: retomar }
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~

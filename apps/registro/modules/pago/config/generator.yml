@@ -1,0 +1,35 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Empresas_Empresa
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          empresas_empresa_pago
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields: ~
+      list:
+        title: Listado de Empresas Inscritas
+        max_per_page:   20
+        table_method: innerList
+        display: [_datos, _pagos, _resumen]
+        actions: []
+        object_actions:
+          pagoDetalle: { label: Gestionar Pagos, action: pagoDetalle }
+#          delegado: { label: Registrar delegado, action: delegados }
+#          disciplina: { label: Inscribir disciplinas, action: gestionarDisciplina }
+#          planillaInscripcion: { label: Planilla de Inscripción , action: planillaInscripcion }
+        batch_actions: []
+      filter:
+          display: [rif,nombre,pago]
+          fields:
+              rif: { label: RIF }
+      form:    ~
+      edit:    ~
+      new:     ~

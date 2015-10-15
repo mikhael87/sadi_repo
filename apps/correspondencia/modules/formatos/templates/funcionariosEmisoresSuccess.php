@@ -1,0 +1,1 @@
+<?php echo $funcionarios_emisores['funcionario_id']; ?>

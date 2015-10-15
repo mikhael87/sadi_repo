@@ -1,0 +1,42 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Personas_Persona
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          personas_persona_nomina
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        ci: {label: Cédula, help: Documento de identificación de la persona}
+        primer_nombre: {label: Nombre}
+        primer_apellido: {label: Apellido}
+      list:
+        title: Participantes de actividades deportivas
+        max_per_page:   20
+        table_method: innerListParticipante
+        display: [primer_nombre, primer_apellido, ci, _edad, _recaudos]
+        actions:
+          _list: { label: Volver, action: volver }
+          _new: { label: Nuevo Participante }
+        object_actions:
+          anular: {label: Anular, action: anular}
+        batch_actions: []
+      filter:
+        display: [ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido]
+      form:    ~
+      edit:    ~
+      new:
+        title: Nuevo Participante
+        display: 
+          Datos Básicos: [_ci,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,f_nacimiento,sexo,edo_civil,telf_movil,email_personal]
+        actions:
+          _list: { label: Volver }
+          _save: []
+          _save_and_add: []

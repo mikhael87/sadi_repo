@@ -1,0 +1,44 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_FuncionarioUnidad
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_funcionario_unidad
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Grupo autorizado de archivo para la unidad
+        max_per_page:   20
+        display:  [unombre, persona, ctnombre, archivar, leer, prestar, anular, administrar, user_update]
+        fields:
+          unombre: { label: Unidad a la que pertenece }
+          persona: { label: Funcionario }
+          ctnombre: { label: Cargo }
+          user_update: { label: Hecho por }
+        object_actions:
+          _delete:    ~
+        batch_actions: []
+        actions:
+          _new:    ~
+          historico: { action: historico, label: Histórico }
+      filter:
+        class: false
+      form:    ~
+      edit:
+        title: Edición de permiso del funcionario %%funcionario_id%%
+        display:  
+          Permisos: [archivar, leer, prestar, anular, administrar]
+      new:
+        title: Nuevo funcionario autorizado de archivo
+        display:
+          Grupo de: [_unidad_autoriza]
+          Autorizado: [_dependencia_unidad, _funcionario_autorizado]
+          Permisos: [archivar, leer, prestar, anular, administrar]

@@ -1,0 +1,31 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Proveedores_Proveedor
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          proveedores_proveedor
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        rif: { label: RIF }
+      list:
+        title: Proveedores
+        display: [ rif, razon_social, proveedores_tipo_empresa ]
+        fields:
+          proveedores_tipo_empresa: { label: Tipo de empresa }
+        actions:
+          _new: []
+          tipo_empresa: { label: Tipos de empresa, action: tiposEmpresa }
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar proveedor %%razon_social%%
+      new:
+        title: Nuevo proveedor

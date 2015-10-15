@@ -1,0 +1,52 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Public_Mensajes
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          public_mensajes_externo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        created_at: {label: Fecha de envio}
+        status: {label: Estatus}
+        nombre_externo: {label: Grupo, help: Identifique si desea el listado de destinatarios mediante un nombre. }
+        contenido: {help: Para perzonalizar escriba la palabra NOMBRE entre %% Ejem. Hola %%NOMBRE%%}
+      list:
+        table_method: innerList2
+        title: Mensajes Externos
+        display: [_contenido, nombre_externo, _destinatarios, _total_mensajes, _procesados, _cola, _detalles]
+        fields:
+          procesados: {label: Procesados}
+          cola: {label: En cola}
+          movil: {label: Telf. movil}
+          funcionario_envia: {label: Emisor}
+        object_actions:
+          reutilizar: { label: Reutilizar listado, action: reutilizar }
+          cancelar: { label: Cancelar restantes, action: cancelar }
+          pausar: { label: Pausar, action: pausar }
+          continuar: { label: Continuar, action: continuar }
+        batch_actions: []
+        actions:
+          _new: []
+          mensajes: { label: Mensajes Internos, action: mensajes}
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:
+        title: Nuevo mensaje externo
+        display:
+          Receptores: [_telefonos]
+          Importar receptores desde Hoja Excel: [_importarExcel]
+          Mensaje: [contenido]
+          Opciones: [_opciones]
+        actions:
+          _list: []
+          _save: {label: Enviar }        

@@ -1,0 +1,44 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Vehiculos_GpsVehiculo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vehiculos_gps_vehiculo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: innerList
+        title: Gps asignado
+        display: [marca, modelo, operador, _icono, _status, imei, sim, _admin, _alertas]
+        fields:
+          operador: { label: 'Operador GSM' }
+          status: { label: 'Operatividad' }
+          imei: { label: 'IMEI' }
+          sim: { label: 'SIM' }
+          admin: { label: 'Administradores' }
+          alerta_parametro: { label: 'Alertas' }
+        actions:
+          regresar_modulo: { label: Volver a Vehículos, action: volver }
+        object_actions:
+          _edit: []
+          alerta: { label: Alertas, action: alertas }
+          _delete: []
+        batch_actions: []
+      filter:  
+      form:    ~
+      edit:
+        title: Gps asignado
+        display:
+          Iconos para Tracking: [_icono_edit, _color_icon]
+        actions:
+          regresar_modulo: { label: Volver a Gps asignado, action: volverGpsVehiculo }
+          _save : { label: Guardar }
+      new:     ~

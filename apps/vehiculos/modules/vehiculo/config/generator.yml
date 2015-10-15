@@ -1,0 +1,63 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Vehiculos_Vehiculo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vehiculos_vehiculo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        tipo_id: { label: Tipo de vehículo, help: Seleccione el tipo de carrocería }
+        tipo_uso_id: { label: Uso del vehículo, help: Seleccione que tipo de uso se de dará al vehículo que registra }
+        kilometraje_inicial: { label: Kilometraje, help: Kilometraje al momento de registrar el vehículo }
+        vel_max: { label: Velocidad Max., help: Velocidad maxima indicada en el tablero del vehículo }
+        ano: { label: Año }
+        serial_motor: { label: Serial del motor, help: Consulte los documentos de registro del vehículo }
+        serial_carroceria: { label: Serial de carroceria, help: Consulte los documentos de registro del vehículo }
+      list:
+        table_method: innerList
+        title: Lista de Vehículos
+        max_per_page:   20
+        display: [_vehiculo, _descripcion, _conductores, _servicio]
+        fields:  ~
+#          destino: { label: 'Destino y motivo' }
+        actions:
+          _new: { label: Nuevo }
+          tipo_vehiculo: { label: Tipos de Vehiculos, action: tipoVehiculo }
+          tipo_vehiculo_usos: { label: Tipos de Usos, action: tipoVehiculoUso }
+          tipo_servicio: { label: Tipos de Servicios, action: tipoServicio }
+          estadisticas: { label: Estadisticas, action: estadisticas }
+#          alerta_visitante: { label: Visitantes en alerta, action: alertaVisitante}
+#          pases_ingreso: { label: Pases de ingreso, action: pasesIngreso }
+        object_actions:
+          _edit: []
+          conductores: { label: Historico de Conductores, action: conductores }
+          servicios: { label: Servicios, action: servicios }
+          gps: { label: Dispositivo instalado, action: gps }
+          track: { label: Tracker, action: track }
+        batch_actions: []
+      filter:
+        display: [marca, modelo, color, placa, tipo_id, tipo_uso_id, _kilometraje_actual_filter, ano, serial_motor, serial_carroceria, _servicios_filter]
+        fields:
+          marca: { label: Marca }
+      form:    ~
+      edit:
+        title: Actualización de vehículo
+        display:
+          Datos del vehículo: [marca,modelo,placa,tipo_id,tipo_uso_id,color,kilometraje_inicial,vel_max,serial_motor,serial_carroceria]
+        actions:
+          regresar_modulo: { label: Volver a Vehículos, action: volver }
+          _save: { label: Guardar }
+      new:
+        title: Nuevo vehículo
+        display:
+          Datos del vehículo: [marca,modelo,placa,tipo_id,tipo_uso_id,color,ano,kilometraje_inicial,vel_max,serial_motor,serial_carroceria]
+        actions:
+          _save: { label: Guardar }

@@ -1,0 +1,46 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Operaciones_RegistroPago
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          operaciones_registro_pago
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        monto: {help: "Para indicar decimales utilice el punto (.)"}
+        banco: {help: "Indique nombre de entidad financiera"}
+        referencia: {label: Núm. referencia, help: "Indique número de referencia en caso de que aplique"}
+      list:
+        title: Pagos recaudados
+        max_per_page:   20
+        table_method: innerList
+        display: [_tipo_pago, banco, _monto,referencia, _fecha]
+        actions:
+            _list: { label: Volver, action: volver }
+            _new: { label: Nuevo Pago }
+        object_actions:
+            _edit: []
+            anular: {label: Anular, action: anular}
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar Pago
+        display: [tipo_pago_id, monto, banco, referencia]
+        actions:
+          _list: { label: Volver }
+          _save: []
+      new:
+        title: Nuevo Pago
+        display: [tipo_pago_id, monto, banco, referencia]
+        actions:
+          _list: { label: Volver }
+          _save: []
+          _save_and_add: []

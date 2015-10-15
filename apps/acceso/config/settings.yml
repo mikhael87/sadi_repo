@@ -1,0 +1,53 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/04-Settings
+
+prod:
+  .settings:
+    no_script_name:         true
+    logging_enabled:        false
+
+dev:
+  .settings:
+    error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
+    web_debug:              true
+    cache:                  false
+    no_script_name:         false
+    etag:                   false
+
+test:
+  .settings:
+    error_reporting:        <?php echo ((E_ALL | E_STRICT) ^ E_NOTICE)."\n" ?>
+    cache:                  false
+    web_debug:              false
+    no_script_name:         false
+    etag:                   false
+
+all:
+  .settings:
+    # Form security secret (CSRF protection)
+    csrf_secret:            602063c48a94d04735b41f80fb9dadc993ecbc7f
+
+    # Output escaping settings
+    escaping_strategy:      true
+    escaping_method:        ESC_SPECIALCHARS
+
+    # Enable the database manager
+    use_database:           true
+
+    # i18n
+    i18n:                   on       # Enable interface translation. Set to off if your application should not be translated.
+    default_culture:        es       # Default user culture
+
+    # Charset used for the response
+    charset:                utf-8
+
+  .actions:
+    login_module: usuario
+    login_action: index
+    
+    # i18n
+    i18n:                   on       # Enable interface translation. Set to off if your application should not be translated.
+    default_culture:        es       # Default user culture
+
+    # Charset used for the response
+    charset:                utf-8

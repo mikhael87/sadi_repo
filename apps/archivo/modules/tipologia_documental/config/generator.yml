@@ -1,0 +1,37 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Archivo_TipologiaDocumental
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          archivo_tipologia_documental
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields: ~
+      list:
+        table_method: innerList
+        title: Tipologías Documentales
+        max_per_page:   500
+        display: [ nombre, _etiquetas_list ]
+        fields:
+          etiquetas_list: { label: Etiquetas }
+        actions:
+          regresar_modulo: { label: Regresar a las series, action: regresarSeries }
+          _new: []
+          cuerpos: { label: Sección, action: cuerpos }
+        batch_actions: []
+      filter:
+        class: false
+      form: ~
+      edit:
+        title: Editar tipología documental "%%nombre%%"
+        display: [ nombre, _detalles ]
+      new:
+        title: Nueva tipología documental
+        display: [ nombre, _detalles ]

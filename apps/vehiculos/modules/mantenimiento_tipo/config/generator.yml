@@ -1,0 +1,45 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Vehiculos_MantenimientoTipo
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vehiculos_mantenimiento_tipo
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields: ~
+      list:
+        title: Tipos de Servicios
+        display: [nombre, descripcion, _icono, _status, created_at]
+        fields:
+          status: { label: Estatus }
+          created_at: { label: Fecha de creación }
+        actions:
+          _new: { label: Nuevo }
+          regresar_modulo: { label: Volver a Vehículos, action: volver }
+        object_actions:
+          _edit: []
+          _delete: []
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar tipo de servicio "%%nombre%%"
+        display: [nombre, descripcion, icono]
+        actions:
+          regresar_modulo: { label: Volver a Tipos de Servicios, action: volverTipoServicio }
+          _save: { label: Guardar }
+      new:
+        title: Nuevo tipo de servicio
+        display:
+          Datos del servicio: [nombre,descripcion,icono]
+        actions:
+          regresar_modulo: { label: Volver a Tipos de Servicios, action: volverTipoServicio }
+          _save: { label: Guardar }
+          _save_and_add: { label: Guardar y agregar }

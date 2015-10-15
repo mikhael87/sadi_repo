@@ -1,0 +1,55 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Correspondencia_Correspondencia
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          correspondencia_correspondencia_recibida
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        n_correspondencia_emisor: { label: N° Envio }
+        nCorrespondenciaReceptor: { label: N° Recepción }
+        f_envio: { label: Fecha de Envio }
+        status: { label: Estatus }
+        emisor_organismo_id: { label: Organización }
+        emisor_persona_id: { label: Nombre Emisor }
+        emisor_persona_cargo_id: { label: Cargo Emisor }
+        tipo_traslado_externo: { label: Forma de envio }
+        empresa_traslado: { label: Empresa contratada }
+        n_guia_traslado: { label: Nº de Guia }
+      list:
+        table_method: innerListRecibida
+        title: Correspondencia y Solicitudes recibidas
+        max_per_page:   10
+        #display:  [f_envio, n_correspondencia_emisor, _de, _firmantes, _receptores, _formatos, tadjuntos, tfisicos, _status, _ultima_vista, _acciones]
+        display:  [_identificacion, _documento, _detalles, _acciones]
+        fields:
+          tadjuntos: { label: . }
+          tfisicos: { label: . }
+          ultima_vista: { label: ' ' }
+        actions:
+          excel: {label: Exportar, action: excel}
+        object_actions: []
+        batch_actions: []
+      filter:
+        display: [n_correspondencia_emisor, f_envio, statusRecepcion, _separador_emisor_externo, emisor_organismo_id,emisor_persona_id,emisor_persona_cargo_id, tipo_traslado_externo, empresa_traslado, n_guia_traslado, _separador_emisor_interno, _unidad_funcionario_emisor_filter, _separador_receptor, _unidad_funcionario_receptor_filter, _separador_formatos, formato, formatoPalabra, _separador_adjuntos, adjunto, _separador_fisicos, fisico, fisicoPalabra]
+        fields:
+          n_correspondencia_emisor: { label: N° Envio, help: Número de correlativo }
+          emisor_persona_id: { label: Emitido por, help: Nombre de la persona externa que envio }
+          emisor_persona_cargo_id: { label: Cargo, help: Cargo de la persona externa que envio la correspondencia }
+          formato: { label: Tipo }
+          formatoPalabra: { label: Palabra o Frase }
+          adjunto: { label: Nombre }
+          fisico: { label: Tipo }
+          fisicoPalabra: { label: Caracteristicas }
+          statusRecepcion: { label: Estatus }
+      form:    ~
+      edit:    ~
+      new:     ~

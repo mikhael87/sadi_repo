@@ -1,0 +1,47 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Vehiculos_Mantenimiento
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          vehiculos_mantenimiento
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields: ~
+      list:
+        table_method: innerList
+        title: Servicios
+        display: [_icono, nombre, _observacion, _status, _fecha, _kilometraje]
+        fields:
+          icono: { label: '' }
+          nombre: { label: Servicio }
+          status: { label: Estatus }
+          created_at: { label: Fecha de creación }
+        actions:
+          _new: { label: Nuevo }
+          regresar_modulo: { label: Volver a Vehículos, action: volver }
+        object_actions:
+          _edit: []
+          _delete: []
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar servicio
+        display: [mantenimiento_tipo_id, observacion, _pauta]
+        actions:
+          regresar_modulo: { label: Volver a Servicios, action: volverServicios }
+          _save: { label: Guardar }
+      new:
+        title: Nuevo servicio
+        display: [mantenimiento_tipo_id, observacion, _pauta]
+        actions:
+          regresar_modulo: { label: Volver a Servicios, action: volverServicios }
+          _save: { label: Guardar }
+          _save_and_add: { label: Guardar y agregar }

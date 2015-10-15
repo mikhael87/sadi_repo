@@ -1,0 +1,29 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Seguridad_LlaveIngreso
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          seguridad_llave_ingreso
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        n_pase: { label: N° pase }
+      list:
+        title: Pases de Ingreso
+        display: [n_pase, rfid, status]
+        actions:
+          nuevos_pases: { label: Generar pases, action: generarPases}
+          regresar_modulo: { label: Regresar, action: regresar }
+      filter:
+        class: false
+      form:    ~
+      edit:
+        title: Editar pase %%n_pase%%
+      new:     ~

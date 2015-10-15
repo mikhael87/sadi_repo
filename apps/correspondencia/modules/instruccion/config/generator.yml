@@ -1,0 +1,31 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Correspondencia_Instruccion
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          correspondencia_instruccion
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        title: Instrucciones que se emiten desde la unidad
+      filter:
+        class: false
+      form:    ~
+      edit:
+        title: Editar instrucción %%descripcion%%
+        display:
+          Instrucciones de: [_unidad_instruccion]
+          ' ': [descripcion]
+      new:
+        title: Nueva instrucción
+        display:
+          Instrucciones de: [_unidad_instruccion]
+          ' ': [descripcion]

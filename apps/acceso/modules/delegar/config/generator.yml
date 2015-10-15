@@ -1,0 +1,31 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Acceso_AccionDelegada
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          acceso_accion_delegada
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        f_expiracion: { label: Fecha de Expiración, help: Seleccione la fecha que desea culmine esta acción }
+      list:
+        title: Acciones delegadas a otros usuarios
+        table_method: innerList
+        display: [_detalles, _delegado ]
+        object_actions: 
+          deshabilitar: { label: Deshabilitar, action: deshabilitar, params: confirm='¿Estas seguro de deshabilitar la firma?' }
+        batch_actions: []
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:
+        title: Delegar Acciones
+        display: [_accion, _delegar, f_expiracion]

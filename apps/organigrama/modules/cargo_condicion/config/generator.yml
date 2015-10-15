@@ -1,0 +1,29 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Organigrama_CargoCondicion
+    theme:                 admin
+    css:                   default
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          organigrama_cargo_condicion
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        descripcion: {help: Agregue una breve descripcion de la condición del cargo}
+      list:
+        title: Condiciones de Cargos
+        display: [nombre,descripcion]
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar condición de cargo %%nombre%%
+        display: [nombre,descripcion]
+      new:
+        title: Nueva condición de cargo
+        display: [nombre,descripcion]

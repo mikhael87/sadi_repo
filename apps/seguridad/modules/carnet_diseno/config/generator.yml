@@ -1,0 +1,37 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Seguridad_CarnetDiseno
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          seguridad_carnet_diseno
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        table_method: innerList
+        title: Diseños de Carnets
+        display: [_list_preview, _list_detalles, _list_fondos]
+        fields:
+          list_preview: { label: Vista previa }
+          list_detalles: { label: Detalles }
+          list_fondos: { label: Fondos }
+        object_actions: 
+          inactivar: { label: Inactivar, action: inactivar }
+          addBackground: { label: Agregar Fondo, action: addBackground }
+        batch_actions: []
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:
+        title: Nuevo diseño de carnets
+        display: [_carnet_tipo, _preparar_diseno]
+        actions:
+          _list: []
+          _save: []

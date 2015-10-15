@@ -1,0 +1,124 @@
+correspondencia_instruccion:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_Instruccion
+    module:               instruccion
+    prefix_path:          /instruccion
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_tipo_formato:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_TipoFormato
+    module:               tipo_formato
+    prefix_path:          /tipo_formato
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_correspondencia_externa:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_Correspondencia
+    module:               externa
+    prefix_path:          /externa
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_unidad_correlativo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_UnidadCorrelativo
+    module:               correlativos
+    prefix_path:          /correlativos
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_correspondencia_recibida:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_Correspondencia
+    module:               recibida
+    prefix_path:          /recibida
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_receptor:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_Receptor
+    module:               para
+    prefix_path:          /para
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_funcionario_unidad:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_FuncionarioUnidad
+    module:               grupos
+    prefix_path:          /grupos
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_formato:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_Formato
+    module:               formato
+    prefix_path:          /formato
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_anexo_fisico:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_AnexoFisico
+    module:               fisico
+    prefix_path:          /fisico
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_funcionario_emisor:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_FuncionarioEmisor
+    module:               firman
+    prefix_path:          /firman
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_correspondencia:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_Correspondencia
+    module:               enviada
+    prefix_path:          /enviada
+    column:               id
+    with_wildcard_routes: true
+
+correspondencia_anexo_archivo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Correspondencia_AnexoArchivo
+    module:               adjuntos
+    prefix_path:          /adjuntos
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

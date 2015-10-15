@@ -1,0 +1,79 @@
+inventario_articulo_egreso_despacho_unidades:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Inventario_ArticuloEgreso
+    module:               despacho_unidades
+    prefix_path:          /despacho_unidades
+    column:               id
+    with_wildcard_routes: true
+
+inventario_articulo_egreso:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Inventario_ArticuloEgreso
+    module:               despacho_articulos
+    prefix_path:          /despacho_articulos
+    column:               id
+    with_wildcard_routes: true
+
+inventario_articulo_ingreso:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Inventario_ArticuloIngreso
+    module:               articulo_ingreso
+    prefix_path:          /articulo_ingreso
+    column:               id
+    with_wildcard_routes: true
+
+inventario_inventario:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Inventario_Inventario
+    module:               inventario
+    prefix_path:          /inventario
+    column:               id
+    with_wildcard_routes: true
+
+inventario_almacen:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Inventario_Almacen
+    module:               almacen
+    prefix_path:          /almacen
+    column:               id
+    with_wildcard_routes: true
+
+inventario_articulo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Inventario_Articulo
+    module:               articulo
+    prefix_path:          /articulo
+    column:               id
+    with_wildcard_routes: true
+
+inventario_unidad_medida:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Inventario_UnidadMedida
+    module:               unidad_medida
+    prefix_path:          /unidad_medida
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

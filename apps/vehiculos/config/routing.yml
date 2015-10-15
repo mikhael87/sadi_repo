@@ -1,0 +1,115 @@
+vehiculos_conductor_vehiculo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_ConductorVehiculo
+    module:               conductor_vehiculo
+    prefix_path:          /conductor_vehiculo
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_gps_vehiculo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_GpsVehiculo
+    module:               gps_vehiculo
+    prefix_path:          /gps_vehiculo
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_comando:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_Comando
+    module:               comando
+    prefix_path:          /comando
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_condicion:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_Condicion
+    module:               condicion_asignacion
+    prefix_path:          /condicion_asignacion
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_conductor:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_Conductor
+    module:               conductor
+    prefix_path:          /conductor
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_tipo_uso:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_TipoUso
+    module:               vehiculo_tipo_uso
+    prefix_path:          /vehiculo_tipo_uso
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_tipo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_Tipo
+    module:               vehiculo_tipo
+    prefix_path:          /vehiculo_tipo
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_mantenimiento_tipo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_MantenimientoTipo
+    module:               mantenimiento_tipo
+    prefix_path:          /mantenimiento_tipo
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_mantenimiento:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_Mantenimiento
+    module:               mantenimiento
+    prefix_path:          /mantenimiento
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_gps:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_Gps
+    module:               gps
+    prefix_path:          /gps
+    column:               id
+    with_wildcard_routes: true
+
+vehiculos_vehiculo:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Vehiculos_Vehiculo
+    module:               vehiculo
+    prefix_path:          /vehiculo
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

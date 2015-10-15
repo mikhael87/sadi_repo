@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Organigrama_CargoGrado
+    theme:                 admin
+    css:                   default
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          organigrama_cargo_grado
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        siglas: {help: Agregue las siglas del grado del cargo}
+        orden: {label: Jerarquía, help: Agrege un número identificando la jerarquía mientras menos jerarquía mayor el número}
+      list:
+        title: Grados de Cargos
+        display: [nombre,siglas,orden]
+        fields:
+          organigrama_cargo_tipo: { label: Tipo }
+      filter:  ~
+      form:    ~
+      edit:
+        title: Editar grado de cargo %%nombre%%
+        display: [nombre,siglas,orden]
+      new:
+        title: Nuevo grado de cargo
+        display: [nombre,siglas,orden]
